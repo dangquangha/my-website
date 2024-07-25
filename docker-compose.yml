@@ -1,0 +1,54 @@
+version: '3'
+services:
+  php:
+    build:
+      context: .
+      dockerfile: ./docker/php/Dockerfile
+    image: harry_dang/php
+    container_name: harry_app
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www
+    volumes:
+       - ./:/var/www
+       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+    networks:
+      - app-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: harry_nginx
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "81:80"
+      - "444:443"
+    volumes:
+      - ./:/var/www
+      - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+    networks:
+      - app-network
+
+  mysql:
+    image: mysql:5.7.22
+    container_name: harry_mysql
+    restart: unless-stopped
+    tty: true
+    ports:
+      - "3307:3306"
+    environment:
+      MYSQL_DATABASE: harry_dang
+      MYSQL_ROOT_PASSWORD: quangha2611
+    volumes:
+      - mysqldata:/var/lib/mysql
+      - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+    networks:
+      - app-network
+
+networks:
+  app-network:
+    driver: bridge
+
+volumes:
+  mysqldata:
+    driver: local
