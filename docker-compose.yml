@@ -3,7 +3,7 @@ services:
   php:
     build:
       context: .
-      dockerfile: ./docker/php/Dockerfile
+      dockerfile: ./Dockerfile
     image: harry_dang/php
     container_name: harry_app
     restart: unless-stopped
@@ -21,8 +21,8 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "81:80"
-      - "444:443"
+      - "80:80"
+      - "443:443"
     volumes:
       - ./:/var/www
       - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
@@ -35,7 +35,7 @@ services:
     restart: unless-stopped
     tty: true
     ports:
-      - "3307:3306"
+      - "3306:3306"
     environment:
       MYSQL_DATABASE: harry_dang
       MYSQL_ROOT_PASSWORD: quangha2611
