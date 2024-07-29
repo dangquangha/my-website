@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: Pull Docker image
-      run: sudo docker pull harry_dang/my-website:latest
+      run: sudo docker pull quangha2611/my-website:latest
 
     - name: Stop old container
       run: sudo docker stop harry_app || true
