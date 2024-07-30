@@ -52,4 +52,4 @@ COPY . /var/www
 # Expose port 9000 and start php-fpm server
 EXPOSE 9000
 
-CMD ["sh", "-c", "composer install && php-fpm"]
+CMD ["php-fpm"]
