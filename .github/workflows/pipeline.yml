@@ -15,7 +15,13 @@ jobs:
     steps:
     
     - name: Go to project
+      run: pwd
+
+    - name: Go to project
       run: cd ~/my-website
+
+    - name: Go to project
+      run: ls -la
 
     - name: Pull code
       run: sudo git pull origin master
