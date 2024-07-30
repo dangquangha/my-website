@@ -18,7 +18,7 @@ jobs:
       run: pwd
 
     - name: Go to project
-      run: cd ~/my-website
+      run: cd /home/ubuntu/my-website
 
     - name: Go to project
       run: ls -la
