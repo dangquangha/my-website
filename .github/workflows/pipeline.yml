@@ -15,7 +15,7 @@ jobs:
     steps:
     
     - name: Go to project
-      run: ~/my-website
+      run: cd ~/my-website
 
     - name: Pull code
       run: git pull origin master
