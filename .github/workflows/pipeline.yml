@@ -23,10 +23,13 @@ jobs:
       run: sudo docker rm harry_app || true
 
     - name: Run project
-      run: sudo docker compose restart
+      run: sudo docker compose up -d
 
     - name: Composer install
       run: sudo docker exec -t harry_app composer install
 
     - name: Migrate database
       run: sudo docker exec -t harry_app php artisan migrate
+
+    - name: Restart serve
+      run: sudo docker harry_nginx restart
