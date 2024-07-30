@@ -23,7 +23,7 @@ jobs:
       run: sudo docker rm harry_app || true
 
     - name: Run project
-      run: sudo docker compose up -d
+      run: sudo docker compose restart
 
     - name: Composer install
       run: sudo docker exec -t harry_app composer install
