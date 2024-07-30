@@ -14,11 +14,7 @@ jobs:
 
     steps:
     
-    - name: Go to project
-      run: cd ~/my-website
-
-    - name: Pull code
-      run: git pull origin master
+    
 
     - name: Stop old container
       run: sudo docker stop harry_app || true
@@ -26,11 +22,4 @@ jobs:
     - name: Remove old container
       run: sudo docker rm harry_app || true
 
-    - name: Run project
-      run: sudo docker compose up -d
-
-    - name: Composer install
-      run: sudo docker exec -it harry_app composer install
-
-    - name: Migrate database
-      run: sudo docker exec -it harry_app php artisan migrate
+   
