@@ -13,13 +13,6 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    
-    - name: Go to project
-      run: pwd
-
-    - name: Go to project
-      run: ls -la
-
     - name: Pull code
       run: sudo git pull origin master
 
@@ -33,7 +26,4 @@ jobs:
       run: sudo docker compose up -d
 
     - name: Composer install
-      run: sudo docker exec -it harry_app composer install
-
-    - name: Migrate database
-      run: sudo docker exec -it harry_app php artisan migrate
+      run: sudo docker exec -t harry_app composer install
