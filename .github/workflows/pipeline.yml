@@ -27,3 +27,6 @@ jobs:
 
     - name: Composer install
       run: sudo docker exec -t harry_app composer install
+
+    - name: Migrate database
+      run: sudo docker exec -t harry_app php artisan migrate

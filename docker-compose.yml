@@ -36,11 +36,13 @@ services:
     tty: true
     ports:
       - "3306:3306"
+    command: --init-file /data/application/init.sql
     environment:
       MYSQL_DATABASE: harry_dang
       MYSQL_ROOT_PASSWORD: quangha2611
     volumes:
       - mysqldata:/var/lib/mysql
+      - ./docker/mysql/init.sql:/data/application/init.sql
       - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
     networks:
       - app-network
