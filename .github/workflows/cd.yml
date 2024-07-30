@@ -1,10 +1,10 @@
-name: Pipeline
+name: CD Pipeline
 
 on:
-  push:
-    branches: [ "master" ]
-  pull_request:
-    branches: [ "master" ]
+  workflow_run:
+    workflows: ["CI Pipeline"]
+    types:
+      - completed
 
 jobs:
 
@@ -13,13 +13,11 @@ jobs:
     runs-on: self-hosted
 
     steps:
-    
-    
+    - name: Pull Docker image
+      run: sudo docker pull quangha2611/my-website:latest
 
     - name: Stop old container
       run: sudo docker stop harry_app || true
 
     - name: Remove old container
       run: sudo docker rm harry_app || true
-
-   
