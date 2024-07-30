@@ -30,6 +30,3 @@ jobs:
 
     - name: Migrate database
       run: sudo docker exec -t harry_app php artisan migrate
-
-    - name: Restart serve
-      run: sudo docker harry_nginx restart
