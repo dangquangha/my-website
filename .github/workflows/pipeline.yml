@@ -1,0 +1,36 @@
+name: CI Pipeline
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+jobs:
+
+  build:
+
+    runs-on: self-hosted
+
+    steps:
+    
+    - name: Go to project
+      run: ~/my-website
+
+    - name: Pull code
+      run: git pull origin master
+
+    - name: Stop old container
+      run: sudo docker stop harry_app || true
+
+    - name: Remove old container
+      run: sudo docker rm harry_app || true
+
+    - name: Run project
+      run: sudo docker compose up -d
+
+    - name: Composer install
+      run: sudo docker exec -it harry_app composer install
+
+    - name: Migrate database
+      run: sudo docker exec -it harry_app php artisan migrate
