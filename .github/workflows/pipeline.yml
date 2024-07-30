@@ -18,9 +18,6 @@ jobs:
       run: pwd
 
     - name: Go to project
-      run: cd /home/ubuntu/my-website
-
-    - name: Go to project
       run: ls -la
 
     - name: Pull code
